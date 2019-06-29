@@ -7,6 +7,9 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'super-secret'
     app.config['JWT_ACCESS_TOKEN_EXPIRES']=timedelta(seconds=200)
+    @app.route('/')
+    def index():
+        return "App Deployed!"
     jwt = JWTManager(app)
     from . import auth
     app.register_blueprint(auth.bp)
