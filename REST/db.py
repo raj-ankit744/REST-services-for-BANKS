@@ -1,12 +1,11 @@
 import psycopg2
 import psycopg2.extras
 from flask import g
-
-db_url = "postgresql://localhost:5432/banks"
+from .db_config import user, password, host, port, database
 def connect_db():
     if 'conn' not in g:
         try:
-            g.conn = psycopg2.connect(user = "arg", password="postgres", host="localhost", port="5432", database="banks", cursor_factory=psycopg2.extras.DictCursor)
+            g.conn = psycopg2.connect(user = user, password=password , host=host, port=port, database=database, cursor_factory=psycopg2.extras.DictCursor)
         except Exception as e:
             print(str(e))
     if 'cur' not in g:
