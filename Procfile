@@ -1,1 +1,1 @@
-web: waitress-serve --port=80 --url-scheme=https  --call 'REST:create_app'
+web: waitress-serve --port=$PORT --call 'REST:create_app'
