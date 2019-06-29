@@ -24,9 +24,10 @@ def get_bank_details(ifsc):
 @banks.route('/getBranchDetails/<bank_name>/<city>/<int:limit>/<int:offset>')
 @jwt_required
 def get_branch_details(bank_name, city, limit, offset):
-    query = "SELECT * FROM bank_branches WHERE bank_name='%s' AND city='%s' LIMIT %d OFFSET %d"%(bank_name, city, limit, offset)
+    query = "SELECT address, branch, district, ifsc, state  FROM bank_branches WHERE bank_name='%s' AND city='%s' LIMIT %d OFFSET %d"%(bank_name, city, limit, offset)
     try:
         res = select_query(query).fetchall()
+        res = [dict(i) for i in res]
         if res:
             res = {"result": res}
         else:
