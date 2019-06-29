@@ -4,7 +4,7 @@ password = "postgres"
 host = "localhost"
 database = "banks"
 port = "5432"
-def db_config():
+def heroku_config():
     global user, password, host, database, port
     user = "xhllfndfnwtfys"
     password = "a47f245f6f33a0715221f050b8370379ff7979401529fb648851b255ddefc835"

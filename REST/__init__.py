@@ -1,13 +1,13 @@
 from flask import Flask
 from datetime import timedelta
 from flask_jwt_extended import JWTManager
-from .db_config import  db_config
+from .db_config import  heroku_config
 def create_app():
     # create the app
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'ZXXHLFIHT'
-    app.config['JWT_ACCESS_TOKEN_EXPIRES']=timedelta(seconds=200)
-    db_config()
+    app.config['JWT_ACCESS_TOKEN_EXPIRES']=timedelta(days=5)
+    heroku_config()
     @app.route('/')
     def index():
         return "App Deployed!"
